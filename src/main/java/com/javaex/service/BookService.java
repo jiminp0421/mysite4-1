@@ -27,7 +27,7 @@ public class BookService {
 	}
 	
 	
-	public int insert(GuestVo guestVo) {
+	public int write(GuestVo guestVo) {
 		System.out.println("bookService.insert");
 		
 		int count = bookDao.guestBookinsert(guestVo);

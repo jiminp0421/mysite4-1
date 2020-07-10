@@ -38,7 +38,7 @@
 
 			<div id="board">
 				<div id="list">
-					<form action="" method="">
+					<form action="${pageContext.request.contextPath }/board/search" method="get">
 						<div class="form-group text-right">
 							<input type="text">
 							<button type="submit" id=btn_search>검색</button>
@@ -56,46 +56,18 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:forEach items="${bList}" var="bVo">
 							<tr>
-								<td>123</td>
-								<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-								<td>정우성</td>
-								<td>1232</td>
-								<td>2020-12-23</td>
-								<td><a href="">[삭제]</a></td>
+								<td>${bVo.no}</td>
+								<td class="text-left"><a href="${pageContext.request.contextPath}/board/boardRead?no=${bVo.no}">${bVo.title}</a></td>
+								<td>${bVo.name}</td>
+								<td>${bVo.hit }</td>
+								<td>${bVo.reg_date }</td>
+								<td><c:if test="${authUser.no eq bVo.user_no}">
+								<a href="${pageContext.request.contextPath}/board/delete?user_no=${bVo.no}">[삭제]</a>
+									</c:if></td>
 							</tr>
-							<tr>
-								<td>123</td>
-								<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-								<td>정우성</td>
-								<td>1232</td>
-								<td>2020-12-23</td>
-								<td><a href="">[삭제]</a></td>
-							</tr>
-							<tr>
-								<td>123</td>
-								<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-								<td>정우성</td>
-								<td>1232</td>
-								<td>2020-12-23</td>
-								<td><a href="">[삭제]</a></td>
-							</tr>
-							<tr>
-								<td>123</td>
-								<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-								<td>정우성</td>
-								<td>1232</td>
-								<td>2020-12-23</td>
-								<td><a href="">[삭제]</a></td>
-							</tr>
-							<tr class="last">
-								<td>123</td>
-								<td class="text-left"><a href="#">게시판 게시글입니다.</a></td>
-								<td>정우성</td>
-								<td>1232</td>
-								<td>2020-12-23</td>
-								<td><a href="">[삭제]</a></td>
-							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 		
@@ -118,8 +90,11 @@
 						
 						<div class="clear"></div>
 					</div>
-					<a id="btn_write" href="">글쓰기</a>
-				
+					
+					<c:if test="${authUser != null }">
+					<a id="btn_write" href="${pageContext.request.contextPath}/board/writeForm">글쓰기</a>
+					</c:if>
+					
 				</div>
 				<!-- //list -->
 			</div>

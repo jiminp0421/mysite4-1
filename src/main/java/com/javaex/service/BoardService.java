@@ -17,14 +17,35 @@ public class BoardService {
 	
 	//게시판 리스트
 	
-	public List<BoardVo> boardList (BoardVo boardVo) {
+	public List<BoardVo> showBoardList () {
 		
 		System.out.println("1 service.boardList");
 		
-		List<BoardVo> bList = boardDao.getBoardList();
+		List<BoardVo> bList = boardDao.boardList();
 		
 		
 		return bList;
+	}
+	
+	public BoardVo read (int no) {
+		System.out.println("2 service.read");
+		
+		
+		return boardDao.read(no);
+	}
+	
+	public int insert(BoardVo boardVo) {
+		
+		System.out.println("3 service.insert");
+		
+		return boardDao.insert(boardVo);
+	}
+	
+	//게시판 삭제하기
+	public int delete (int no) {
+		System.out.println("4 service.delete");
+		
+		return boardDao.delete(no);
 	}
 	
 	

@@ -16,13 +16,33 @@ public class BoardDao {
 	
 	//보드 리스트
 	
-	public List<BoardVo> getBoardList() {
-		List<BoardVo> boardBookList = sqlSession.selectList("board.getBoardList");
+	public List<BoardVo> boardList() {
+		
+		
+		List<BoardVo> bList = sqlSession.selectList("board.boardList");
 		System.out.println("BoardDaoList");
 		
-		return boardBookList;
+		return bList;
 	}
 	
+	public BoardVo read(int no) {
+		System.out.println("BoardDaoRead");
+		
+		
+		return sqlSession.selectOne("board.read", no) ;
+	}
+	
+	public int insert(BoardVo boardVo) {
+		System.out.println("BoardDaoInsert");
+		
+		return sqlSession.insert("board.insert", boardVo);
+	}
+	
+	public int delete(int no) {
+		System.out.println("Daodelete");
+		System.out.println(no);
+		return sqlSession.delete("board.delete", no);
+	}
 	
 
 }

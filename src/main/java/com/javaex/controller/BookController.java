@@ -35,7 +35,7 @@ public class BookController {
 	public String write(@ModelAttribute GuestVo guestVo) {
 		
 		System.out.println("/guest/write");
-		bookService.insert(guestVo);
+		bookService.write(guestVo);
 		System.out.println(guestVo.toString());
 		
 		return "redirect:/guest/list";
