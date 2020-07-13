@@ -3,7 +3,7 @@
 <mapper namespace="board">
 
 
-	<select id="boardList" resultType="com.javaex.vo.BoardVo">
+	<select id="boardList" resultType="com.javaex.vo.BoardVo" parameterType="String">
 		<![CDATA[
 			select  b.no,
         			b.title,
@@ -14,8 +14,17 @@
         			u.name
 			from board b, users u
 			where u.no = b.user_no
+			and b.title like '%'|| #{keyword} ||'%'
 		]]>
 	</select>
+	
+	<select id="count" resultType="int">
+		<![CDATA[
+			select count(no)
+			from board
+		]]>	
+	</select>
+	
 	
 	<select id="read" parameterType="int" resultType="com.javaex.vo.BoardVo">
 		<![CDATA[
@@ -46,6 +55,18 @@
 		]]>
 	
 	</delete>
+	
+	<update id="update" parameterType="com.javaex.vo.BoardVo">
+		<![CDATA[ 
+			update board
+			set title = #{title}, content = #{content}
+			where no = #{no}
+		]]>
+	</update>
+	
+	
+	
+
 
 
 

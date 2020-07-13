@@ -40,7 +40,7 @@
 				<div id="list">
 					<form action="${pageContext.request.contextPath }/board/search" method="get">
 						<div class="form-group text-right">
-							<input type="text">
+							<input type="text" name="keyword">
 							<button type="submit" id=btn_search>검색</button>
 						</div>
 					</form>
@@ -74,16 +74,10 @@
 					<div id="paging">
 						<ul>
 							<li><a href="">◀</a></li>
-							<li><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><a href="">4</a></li>
-							<li class="active"><a href="">5</a></li>
-							<li><a href="">6</a></li>
-							<li><a href="">7</a></li>
-							<li><a href="">8</a></li>
-							<li><a href="">9</a></li>
-							<li><a href="">10</a></li>
+							<c:forEach begin = "1" end = "${count}" var = "var">
+								<li><a href="">${var}</a></li>
+							</c:forEach>
+							
 							<li><a href="">▶</a></li>
 						</ul>
 						

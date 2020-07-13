@@ -37,48 +37,52 @@
 			<!-- //content-head -->
 
 			<div id="board">
-				<div id="read">
-					<form action="${pageContext.request.contextPath }/board/boardRead" method="get">
+				<div id="modifyForm">
+					<form action="${pageContext.request.contextPath }/board/modify" method="get">
+					
 						<!-- 작성자 -->
 						<div class="form-group">
 							<span class="form-text">작성자</span>
-							<span class="form-value">${rNo.name }</span>
+							<span class="form-value">${rNo.no}</span>
 						</div>
 						
 						<!-- 조회수 -->
 						<div class="form-group">
 							<span class="form-text">조회수</span>
-							<span class="form-value">${rNo.hit }</span>
+							<span class="form-value">${rNo.hit}</span>
 						</div>
 						
 						<!-- 작성일 -->
 						<div class="form-group">
 							<span class="form-text">작성일</span>
-							<span class="form-value">${rNo.reg_date }</span>
+							<span class="form-value">${rNo.reg_date}</span>
 						</div>
 						
 						<!-- 제목 -->
 						<div class="form-group">
-							<span class="form-text">제 목</span>
-							<span class="form-value">${rNo.title }</span>
+							<label class="form-text" for="txt-title">제목</label>
+							<input type="text" id="txt-title" name="title" value="${rNo.title }">
 						</div>
 					
+						
+					
 						<!-- 내용 -->
-						<div id="txt-content">
-							<span class="form-value" >
-								${rNo.content }
-							</span>
+						<div class="form-group">
+							<textarea id="txt-content" name="content">
+									${rNo.content}
+							</textarea>
 						</div>
 						
-						<c:if test="${authUser.no eq rNo.user_no}">
-							<a id="btn_modify" href="${pageContext.request.contextPath }/board/modifyForm?no=${rNo.no}">수정</a>
-						</c:if>
-						<a id="btn_modify" href="${pageContext.request.contextPath }/board/boardList">목록</a>
+						<input type="hidden" name="no" value="${rNo.no }">
+						<a id="btn_cancel" href="${pageContext.request.contextPath }/board/list">취소</a>
+						
+						<button id="btn_modify" type="submit" >수정</button>
+						
 						
 					</form>
 	                <!-- //form -->
 				</div>
-				<!-- //read -->
+				<!-- //modifyForm -->
 			</div>
 			<!-- //board -->
 		</div>

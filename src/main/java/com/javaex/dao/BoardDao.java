@@ -16,14 +16,22 @@ public class BoardDao {
 	
 	//보드 리스트
 	
-	public List<BoardVo> boardList() {
+	public List<BoardVo> boardList(String keyword) {
 		
 		
-		List<BoardVo> bList = sqlSession.selectList("board.boardList");
+		List<BoardVo> bList = sqlSession.selectList("board.boardList", keyword);
 		System.out.println("BoardDaoList");
+		System.out.println(bList.toString());
 		
 		return bList;
 	}
+	
+	public int count() {
+		System.out.println("BoardDaoCount");
+		
+		return sqlSession.selectOne("board.count");
+	}
+	
 	
 	public BoardVo read(int no) {
 		System.out.println("BoardDaoRead");
@@ -43,6 +51,15 @@ public class BoardDao {
 		System.out.println(no);
 		return sqlSession.delete("board.delete", no);
 	}
+	
+	public int modify(BoardVo boardVo) {
+		System.out.println("BoardDaoModify");
+		
+		System.out.println(boardVo);
+		
+		return sqlSession.update("board.update", boardVo);
+	}
+	
 	
 
 }
