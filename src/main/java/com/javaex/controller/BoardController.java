@@ -41,6 +41,7 @@ public class BoardController {
 	}
 	
 	
+	
 	//게시판 리스트 페이징 추가하기전
 	/*@RequestMapping("/boardList")
 	public String boardList(Model model) {
@@ -138,8 +139,8 @@ public class BoardController {
 //	public String search(Model model, @RequestParam("page") int page, @RequestParam ("keyword") String keyword) {
 //		System.out.println("C.search");
 //		
-////		List<BoardVo> bList = boardService.showBoardList(keyword);
-////		Map<String, Integer> countMap= boardService.count(keyword);
+//		List<BoardVo> bList = boardService.showBoardList(keyword);
+//		Map<String, Integer> countMap= boardService.count(keyword);
 //		
 //		model.addAttribute("bList", bList);
 //		return "/board/list";
