@@ -11,13 +11,13 @@ public class RboardVo {
 	private int group_no;
 	private int order_no;
 	private int depth;
-	
+	private String name;
 	
 	public RboardVo() {}
 	
-	public RboardVo(int no, int user_no, String title, String content, int hit, String reg_date, int group_no,
+	public RboardVo(String name, int no, int user_no, String title, String content, int hit, String reg_date, int group_no,
 			int order_no, int depth) {
-		super();
+		this.name = name;
 		this.no = no;
 		this.user_no = user_no;
 		this.title = title;
@@ -85,14 +85,25 @@ public class RboardVo {
 		this.depth = depth;
 	}
 
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "RboardVo [no=" + no + ", user_no=" + user_no + ", title=" + title + ", content=" + content + ", hit="
 				+ hit + ", reg_date=" + reg_date + ", group_no=" + group_no + ", order_no=" + order_no + ", depth="
-				+ depth + "]";
+				+ depth + ", name=" + name + "]";
 	}
+
+
 	
+
 	
 	
 }

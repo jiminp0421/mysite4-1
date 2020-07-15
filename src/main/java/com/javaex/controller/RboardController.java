@@ -2,13 +2,18 @@ package com.javaex.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.service.RboardService;
 import com.javaex.vo.RboardVo;
+import com.javaex.vo.UserVo;
 
 
 
@@ -29,6 +34,40 @@ public class RboardController {
 		model.addAttribute("bList", rboardVo);
 		
 		return "/rboard/list";
+	}
+	
+	@RequestMapping("/read")
+	public String read(Model model, @RequestParam ("no") int no) {
+		System.out.println("2. read");
+		
+		rboardService.count(no);
+		
+		RboardVo rboardVo = rboardService.read(no);
+		
+		model.addAttribute("bList", rboardVo);
+		
+		return "/rboard/read";
+	}
+	
+	
+	@RequestMapping("/writeForm")
+	public String writeForm() {
+		System.out.println("2.writeForm");
+		
+		return "/rboard/writeForm";
+	}
+	
+	@RequestMapping("/write")
+	public String write(@ModelAttribute RboardVo rboardVo, HttpSession httpSession) {
+		System.out.println("3.write");
+		
+		UserVo vo = (UserVo)httpSession.getAttribute("authUser");
+		
+		rboardVo.setUser_no(vo.getNo());
+		
+		rboardService.write(rboardVo);
+		
+		return"redirect:/rboard/list";
 	}
 
 }

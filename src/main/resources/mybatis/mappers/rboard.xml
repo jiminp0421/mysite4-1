@@ -20,6 +20,42 @@
 			    r.user_no = u.no
 		]]>
 	</select>
+	
+	<select id="read" parameterType="int" resultType="com.javaex.vo.RboardVo">
+		<![CDATA[
+		SELECT 
+			   u.name,
+		       r.hit,
+		       r.reg_date,
+		       r.title,
+		       r.content
+		FROM 
+			   rboard r, users u
+		WHERE 
+			   u.no = r.user_no
+		AND    r.no = #{no}
+		]]>
+	</select>
+	
+	<update id="updateHit" parameterType="int">
+		<![CDATA[
+		UPDATE rboard
+		SET hit = hit + 1
+		WHERE no = #{no}	
+		]]>
+	</update>
+
+	<insert id="rboardInsert" parameterType="com.javaex.vo.RboardVo">
+		<![CDATA[ 
+		INSERT INTO rboard
+		VALUES (SEQ_RBOARD_NO.nextval,#{user_no}, #{title}, #{content},0,sysdate,SEQ_RBOARD_NO.CURRVAL,1,0)		
+		]]>
+	
+	
+	</insert>
+
+
+
 
 
 </mapper>

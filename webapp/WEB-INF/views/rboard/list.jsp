@@ -59,7 +59,7 @@
 							<c:forEach items="${bList}" var="bVo">
 							<tr>
 								<td>${bVo.no}</td>
-								<td class="text-left"><a href="${pageContext.request.contextPath}/board/boardRead?no=${bVo.no}">${bVo.title}</a></td>
+								<td class="text-left"><a href="${pageContext.request.contextPath}/rboard/read?no=${bVo.no}">${bVo.title}</a></td>
 								<td>${bVo.name}</td>
 								<td>${bVo.hit }</td>
 								<td>${bVo.reg_date }</td>
@@ -86,7 +86,7 @@
 					</div>
 					
 					<c:if test="${authUser != null }">
-					<a id="btn_write" href="${pageContext.request.contextPath}/board/writeForm">글쓰기</a>
+					<a id="btn_write" href="${pageContext.request.contextPath}/rboard/writeForm">글쓰기</a>
 					</c:if>
 					
 				</div>

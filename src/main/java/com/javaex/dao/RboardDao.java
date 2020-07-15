@@ -22,5 +22,28 @@ public class RboardDao {
 		
 		return rboardVo;
 	}
+	
+	public RboardVo getSelectOne(int no) {
+		
+		RboardVo rboardVo = sqlSession.selectOne("rboard.read", no);
+		
+		return rboardVo;
+	}
+	
+	public int getupdate(int no) {
+		
+		int hit = sqlSession.update("rboard.updateHit", no);
+		
+		return hit;
+	}
+	
+	
+	
+	public int insert(RboardVo rboardVo) {
+		System.out.println("dao/insert");
+		int result = sqlSession.update("rboardInsert", rboardVo);
+		
+		return result;
+	}
 
 }
